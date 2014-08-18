@@ -17,7 +17,8 @@
 			<%= link_to "decide", decision_criteria_path(d.id), :class => "btn pull-right btn-default btn-md btn-green widey spacr" %>
 		</div>
 		<div class="col-sm-1">
-			<%= button_to " X ", decision_path(d.id), :class => "pull-right btn btn-default rotate btn-md btn-rederer widerr", method: :delete %>
+			<i class="fa fa-trash-o testtt"></i>
+			<%= button_to "", decision_path(d.id), :class => "pull-right btn btn-default btn-md btn-rederer widerr", method: :delete %>
 		</div>
 		<br /><br />
 	</li>
