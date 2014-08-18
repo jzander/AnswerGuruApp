@@ -10,53 +10,37 @@ rescue_from Mongoid::Errors::DocumentNotFound do redirect_to home_path end
   def new
     @user = User.new
   end
-
-  def current_user
-    if User && :user_id && session[:user_id]
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    else
-      return false
-    end
-  end
   
   # Spike
   def create
     user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
     if user.save
-
       session[:user_id] = user.id.to_s
       redirect_to new_decision_path
     else
-      render new
-  end
-
+      render 'new'
+    end
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
     @user = User.find(params[:id])
-      if current_user != @user
-        if 
-          current_user 
+      if current_user.id != @user
+        if current_user 
           redirect_to new_decision_path(current_user)
         else 
           redirect_to new_session_path #send them to login page/ make user login in
-      end
-
-      elsif
-        @user.update_attributes(params.require(:user).permit(:name, :email, :is_active))
+        end
+      elsif @user.update_attributes(params.require(:user).permit(:name, :email, :is_active))
         redirect_to users_path
       else
-        render :edit
+        render 'edit'
       end
-
   end
 
   def destroy
@@ -69,15 +53,9 @@ rescue_from Mongoid::Errors::DocumentNotFound do redirect_to home_path end
   end
 
   def reactivate
-
     @user = User.find(params[:id])
-
   end
 
 
 
 end
-
-
-
-

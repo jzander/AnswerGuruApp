@@ -7,14 +7,6 @@ rescue_from Mongoid::Errors::DocumentNotFound do redirect_to home_path end
 		@is_login = true
 	end
 
-	def current_user
-      if User && :user_id && session[:user_id]
-        @current_user ||= User.find(session[:user_id]) if session[:user_id]
-      else
-        return false
-      end
-  	end
-
 	def create
 		# brings us into our session/stores the thought of loggin in/places cookies/only local machine knows its logged in.
 		 
@@ -32,13 +24,12 @@ rescue_from Mongoid::Errors::DocumentNotFound do redirect_to home_path end
 			flash.now.alert = "Email or password is invalid"
 			#go back to login page.
 			redirect_to new_session_path
-
 		end
 	end
 
 	def destroy
 		session[:user_id] = nil
-		# reset_session
+		reset_session
 		redirect_to decisions_path
 	end
 end
