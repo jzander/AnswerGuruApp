@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -35,10 +35,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'font-awesome-rails', '~> 4.1.0.0'
 
 gem 'rails_12factor'
-
-group :test, :development do
-	gem 'pry-rails'
-end
 
 # Use unicorn as the app server
 # gem 'unicorn'
