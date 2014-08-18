@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  
+rescue_from Mongoid::Errors::DocumentNotFound do redirect_to home_path end 
+
   def index
     # @users = User.all
     @users = User.where(is_active: true)

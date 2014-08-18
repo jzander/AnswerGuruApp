@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+rescue_from Mongoid::Errors::DocumentNotFound do redirect_to home_path end
+
 	def new
 		#presents an empty login form
 		@user = User.new
