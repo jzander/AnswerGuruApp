@@ -51,6 +51,9 @@ class AnswersController < ApplicationController
     end
 
     def update
+      @answers = @decision.answers
+      @answer = Answer.new
+      @criteria = @decision.criteria
     # answer = Answer.find(params[:rating])
     # patching specific Answer with a rating value from index.htm.erb
       respond_to do |format|
