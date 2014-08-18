@@ -25,11 +25,10 @@ class SessionsController < ApplicationController
 			#store as a cookie in the users browser, their unique user id indicating that the user has logged in.
 
 			session[:user_id] = u.id.to_s
-			redirect_to new_decision_path, notice: "welcome!"
+			redirect_to new_decision_path
 		else
 
 			#go back to login page.
-			flash.now.alert = "sorry, try again."
 			redirect_to new_session_path
 
 		end
@@ -37,6 +36,6 @@ class SessionsController < ApplicationController
 
 	def destroy
 		reset_session
-		redirect_to decisions_path, notice: "adios"
+		redirect_to decisions_path
 	end
 end
