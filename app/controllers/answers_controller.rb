@@ -27,8 +27,7 @@ class AnswersController < ApplicationController
     def create
       #find our parent decision that we should attach to?
       @answer = Answer.new(
-        params.require(:answer).permit(:text, :rating)
-        )
+        params.require(:answer).permit(:rating, :text))
  
       
 
