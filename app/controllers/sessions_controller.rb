@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 			session[:user_id] = u.id.to_s
 			redirect_to new_decision_path
 		else
-
+			flash.now.alert = "Email or password is invalid"
 			#go back to login page.
 			redirect_to new_session_path
 
@@ -35,7 +35,8 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		reset_session
+		session[:user_id] = nil
+		# reset_session
 		redirect_to decisions_path
 	end
 end
