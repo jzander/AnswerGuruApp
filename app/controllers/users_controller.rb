@@ -18,7 +18,7 @@ rescue_from Mongoid::Errors::DocumentNotFound do redirect_to home_path end
       session[:user_id] = user.id.to_s
       redirect_to new_decision_path
     else
-      render 'new'
+      root_to home_path
     end
   end
 
