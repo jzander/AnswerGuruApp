@@ -1,15 +1,17 @@
 <div class="container">
+	<div class="answerRateBlock"
 <%#= form_for [@answers] do |y| %>
 	<ul class="listOne">
+
 <%= form_for [@decision, @answer] do |q| %>
 	<% @answers.each do |p| %>
-			<li>For <%= p.text %></li>
-			<ul><span class="ratetxt">Rate the criteria: </span>
+			<li class="answertxt">For <%= p.text %></li><br />
+			<ul><span class="ratetxt">Factors </span>
+			
 		<% @criteria.each do |z| %>
-			<li><%= z.text %>
+			<li class="criteriatxt">Rate <span class="criTxtt"> <%= z.text %></span>
 
-
-			Give this answer a rating: <%= q.select :rating,  
+			 for <%= p.text %> <%= q.select :rating,  
 					'<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -26,12 +28,13 @@
 
 		<% end %>
 
-	</ul>
+	</ul> <br />
 	<% end %>
 			
-<%= q.submit :class => "btn btn-default btn-md btn-bluer text-center", value: "calculate",
-	%>			
+<%= q.submit :class => "btn btn-default btn-md btn-bluer text-center", value: "calculate" %>			
 <% end %>
+
+</div>
 	
 
 
