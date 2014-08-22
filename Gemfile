@@ -38,6 +38,8 @@ gem 'rails_12factor'
 
 gem 'unicorn'
 
+gem 'pry', '~> 0.10.1'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

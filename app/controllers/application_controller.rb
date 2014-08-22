@@ -5,8 +5,23 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def user
+    @user = User.new
+    user = user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def login
+    @user_login = User.new
+    @is_login = true
+  end
+  # Signup from any view
+  def new
+    @user_signup = User.new
+    @is_signup = true
   end
 
   # def current_user

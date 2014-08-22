@@ -11,14 +11,16 @@ rescue_from Mongoid::Errors::DocumentNotFound do redirect_to home_path end
     @user = User.new
   end
   
+
   # Spike
   def create
     user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
+    binding.pry
     if user.save
       session[:user_id] = user.id.to_s
       redirect_to new_decision_path
     else
-      root_to home_path
+      root_path
     end
   end
 
