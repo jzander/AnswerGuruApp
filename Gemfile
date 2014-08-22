@@ -36,6 +36,8 @@ gem 'font-awesome-rails', '~> 4.1.0.0'
 
 gem 'rails_12factor'
 
+gem 'unicorn'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
